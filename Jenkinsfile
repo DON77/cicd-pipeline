@@ -16,7 +16,7 @@ pipeline {
           docker.image('node:7.8').inside {c ->
           sh '''chmod +x scripts/build.sh
 
-cd /opt ls -la    ./scripts/build.sh
+cp package.json /opt/ cd /opt./scripts/build.sh
 '''}
         }
 
