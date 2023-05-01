@@ -14,9 +14,9 @@ pipeline {
       steps {
         script {
           docker.image('node:7.8').inside {c ->
-          sh ''' ls -lah /opt && chmod +x scripts/build.sh
+          sh '''  chmod +x scripts/build.sh
 
-&& cp package.json /opt/ && cd /opt ./scripts/build.sh
+&& cp package.json opt/ && ls -lah /opt && cd /opt  ./scripts/build.sh
 '''}
         }
 
