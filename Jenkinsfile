@@ -5,21 +5,15 @@ pipeline {
       steps {
         script {
           checkout scm
-          ./build.sh
-         
+          ./build.sh 
         }
-
       }
     }
-
     stage('test') {
       steps {
         script {
-         
           ./test.sh
-        
         }
-
       }
     }
   stage('Docker image build'){
@@ -30,16 +24,15 @@ pipeline {
     }
   }
 
-    stage('Publish') {
-      steps {
-        script {
-          docker.withRegistry('', 'docker-id-ci') {
-            docker.image("${registry}:${env.BUILD_ID}").push('latest')
-          }
+  stage('Publish') {
+    steps {
+      script {
+        docker.withRegistry('', 'docker-id-ci') {
+          docker.image("${registry}:${env.BUILD_ID}").push('latest')
         }
-
       }
     }
+  }
 
 //     stage('Deploy') {
 //       steps {
@@ -52,7 +45,7 @@ pipeline {
 //         sh 'sleep 5; curl -i http://localhost:9000/test_string'
 //       }
 //     }
-   }
+ }
   environment {
     registry = 'armensadoyan/ci-cd-pipeline'
   }
