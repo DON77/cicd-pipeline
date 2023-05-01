@@ -26,7 +26,7 @@ pipeline {
     stage('test') {
       steps {
         script {
-          sh 'cd scripts/ && chmod +x build.sh && ./test.sh'
+          sh 'cd scripts/ && chmod +x test.sh && ./test.sh'
         }
 
       }
