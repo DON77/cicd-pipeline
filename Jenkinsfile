@@ -25,7 +25,7 @@ pipeline {
       steps {
         script {
           docker.image("${registry}:${env.BUILD_ID}").inside {c ->
-          sh './scripts/test.sh'
+            sh './scripts/test.sh'}
         }
       }
     }
