@@ -69,6 +69,6 @@ pipeline {
 
   }
   environment {
-    registry = 'armensadoyan/ci-cd'
+    registry = 'armensadoyan/ci-cd-pipeline'
   }
 }
