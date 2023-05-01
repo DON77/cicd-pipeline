@@ -5,6 +5,7 @@ pipeline {
       steps {
         script {
           checkout scm
+          def customImage = docker.build("${registry}:${env.BUILD_ID}")
         }
 
       }
@@ -13,12 +14,9 @@ pipeline {
     stage('Build Application') {
       steps {
         script {
-          docker.image('node:latest').inside {c ->
+          docker.image("${registry}:${env.BUILD_ID}").inside {c ->
           sh '''
-
-npm cache clean --force
-npm install -g appcenter-cli --force
-&& cd scripts/ && chmod +x build.sh && ./build.sh
+cd scripts/ && chmod +x build.sh && ./build.sh
 '''}
         }
 
@@ -30,15 +28,6 @@ npm install -g appcenter-cli --force
         script {
           docker.image('node:12').inside {c ->
           sh 'cd scripts/ && chmod +x test.sh && ./test.sh'}
-        }
-
-      }
-    }
-
-    stage('Docker image build') {
-      steps {
-        script {
-          def customImage = docker.build("${registry}:${env.BUILD_ID}")
         }
 
       }
