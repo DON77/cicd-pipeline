@@ -5,7 +5,6 @@ pipeline {
       steps {
         script {
           checkout scm
-
         }
 
       }
@@ -16,7 +15,7 @@ pipeline {
         script {
           docker.image('node:7.8').inside {c ->
           sh '''
-cd scripts/ && chmod +x build.sh && ./build.sh
+cd scripts/ && chmod +x build.sh && sudo ./build.sh
 '''}
         }
 
