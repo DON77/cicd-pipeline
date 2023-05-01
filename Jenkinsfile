@@ -13,7 +13,7 @@ pipeline {
     stage('Build Application') {
       steps {
         script {
-          docker.iamge('node:12')..inside {c ->
+          docker.iamge('node:12').inside {c ->
           sh '''
           cd scripts/ && chmod +x build.sh && ./build.sh
           '''}
@@ -25,7 +25,7 @@ pipeline {
     stage('test') {
       steps {
         script {
-          docker.iamge('node:12')..inside {c ->
+          docker.iamge('node:12').inside {c ->
             sh 'cd scripts/ && chmod +x test.sh && ./test.sh'}
         }
 
