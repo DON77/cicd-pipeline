@@ -15,7 +15,7 @@ pipeline {
         script {
           sh '''
           curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-          apt-get install -y nodejs
+          sudo apt-get install -y nodejs
           cd scripts/ && chmod +x build.sh && ./build.sh
           '''
         }
