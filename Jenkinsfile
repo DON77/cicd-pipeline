@@ -15,7 +15,7 @@ pipeline {
         script {
           docker.image('node:12').inside {c ->
           sh '''
-sudo chown -R 133:143 /.npm &&
+chown -R 133:143 /.npm &&
 cd scripts/ && chmod +x build.sh && ./build.sh
 '''}
         }
