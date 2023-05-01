@@ -15,7 +15,7 @@ pipeline {
       steps {
         script {
            //docker.image("${registry}:${env.BUILD_ID}").inside {c ->
-          sh 'ls -a && cd scripts/ ls -lah build.sh &&  && sudo .build.sh'
+          sh 'ls -a && cd scripts/ && ls -lah build.sh  && sudo .build.sh'
         }
 
       }
