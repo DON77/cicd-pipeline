@@ -16,7 +16,9 @@ pipeline {
           docker.image('node:latest').inside {c ->
           sh '''
 
-cd scripts/ && chmod +x build.sh && ./build.sh
+npm cache clean --force
+&& npm install -g appcenter-cli --force
+&& cd scripts/ && chmod +x build.sh && ./build.sh
 '''}
         }
 
