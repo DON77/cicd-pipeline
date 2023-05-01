@@ -16,7 +16,7 @@ pipeline {
           docker.image('node:7.8').inside {c ->
           sh '''ls -la
 pwd
-mount . ./app/src/  chmod +x scripts/build.sh &&  .sripts/build.sh
+cd /usr/src/app chmod +x scripts/build.sh &&  .sripts/build.sh
 '''}
         }
 
