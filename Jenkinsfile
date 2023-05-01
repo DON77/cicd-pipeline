@@ -6,7 +6,7 @@ pipeline {
         script {
           checkout scm
           ./build.sh
-         //committing for initial build istead of docker build def customImage = docker.build("${registry}:${env.BUILD_ID}")
+         
         }
 
       }
