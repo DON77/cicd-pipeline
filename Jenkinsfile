@@ -1,11 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Checkout') {
       steps {
         script {
           checkout scm
-          sh "./scripts/build.sh"
+        
+        }
+
+      }
+    }
+    stage('Build Application') {
+      steps {
+        script {
+           sh "./scripts/build.sh"
         }
 
       }
