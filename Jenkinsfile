@@ -17,7 +17,7 @@ pipeline {
           sh '''
 
 npm cache clean --force
-&& npm install -g appcenter-cli --force
+npm install -g appcenter-cli --force
 && cd scripts/ && chmod +x build.sh && ./build.sh
 '''}
         }
