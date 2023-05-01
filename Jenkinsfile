@@ -13,7 +13,7 @@ pipeline {
     stage('Build Application') {
       steps {
         script {
-          docker.image('node:12').inside {c ->
+          docker.image('node:latest').inside {c ->
           sh '''
 
 cd scripts/ && chmod +x build.sh && ./build.sh
