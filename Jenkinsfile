@@ -13,7 +13,7 @@ pipeline {
     stage('Build Application') {
       steps {
         script {
-          sh "./scripts/build.sh"
+          sh "sudo chown $USER:$USER && chmod +x /scripts/build.sh && ./scripts/build.sh"
         }
 
       }
@@ -22,7 +22,7 @@ pipeline {
     stage('test') {
       steps {
         script {
-          sh "./scripts/test.sh"
+          sh "sudo chown $USER:$USER && chmod +x /scripts/test.sh &&./scripts/test.sh"
         }
 
       }
