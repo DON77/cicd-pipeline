@@ -13,11 +13,10 @@ pipeline {
     stage('Build Application') {
       steps {
         script {
+          docker.iamge('node:12')..inside {c ->
           sh '''
-          curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-          sudo apt-get install -y nodejs
           cd scripts/ && chmod +x build.sh && ./build.sh
-          '''
+          '''}
         }
 
       }
@@ -26,7 +25,8 @@ pipeline {
     stage('test') {
       steps {
         script {
-          sh 'cd scripts/ && chmod +x test.sh && ./test.sh'
+          docker.iamge('node:12')..inside {c ->
+            sh 'cd scripts/ && chmod +x test.sh && ./test.sh'}
         }
 
       }
