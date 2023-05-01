@@ -52,8 +52,7 @@ pipeline {
 //         sh 'sleep 5; curl -i http://localhost:9000/test_string'
 //       }
 //     }
-
-//   }
+   }
   environment {
     registry = 'armensadoyan/ci-cd-pipeline'
   }
