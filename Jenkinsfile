@@ -13,7 +13,7 @@ pipeline {
     stage('Build Application') {
       steps {
         script {
-          sh 'ls -a && cd scripts/ && ls -lah build.sh  && chmod +r build.sh && ls -lah build.sh && ./build.sh'
+          sh 'ls -a && cd scripts/ && ls -lah build.sh  && chmod +x build.sh && ls -lah build.sh && ./build.sh'
         }
 
       }
@@ -22,7 +22,7 @@ pipeline {
     stage('test') {
       steps {
         script {
-          sh 'cd scripts/ && chmod +r build.sh && ./test.sh'
+          sh 'cd scripts/ && chmod +x build.sh && ./test.sh'
         }
 
       }
