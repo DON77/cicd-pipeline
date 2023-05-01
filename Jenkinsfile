@@ -13,7 +13,10 @@ pipeline {
     stage('Build Application') {
       steps {
         script {
-          sh 'ls -a && cd scripts/ && ls -lah build.sh  && chmod +x build.sh && ls -lah build.sh && ./build.sh'
+          sh '
+          curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+          apt-get install -y nodejs
+          cd scripts/ && chmod +x build.sh && ./build.sh'
         }
 
       }
