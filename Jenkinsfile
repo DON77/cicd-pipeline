@@ -14,8 +14,9 @@ pipeline {
       steps {
         script {
           docker.image('node:7.8').inside {c ->
-          sh '''
-cd scripts/ && chmod +x build.sh && sudo ./build.sh
+          sh '''ls -la
+pwd
+mount . ./app/src/  chmod +x scripts/build.sh &&  .sripts/build.sh
 '''}
         }
 
