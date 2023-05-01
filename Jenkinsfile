@@ -5,7 +5,6 @@ pipeline {
       steps {
         script {
           checkout scm
-          
         }
 
       }
@@ -14,8 +13,7 @@ pipeline {
     stage('Build Application') {
       steps {
         script {
-           //docker.image("${registry}:${env.BUILD_ID}").inside {c ->
-          sh 'ls -a && cd scripts/ && ls -lah build.sh  && sudo .build.sh'
+          sh 'ls -a && cd scripts/ && ls -lah build.sh  && chmod +r build.sh && .build.sh'
         }
 
       }
@@ -24,17 +22,16 @@ pipeline {
     stage('test') {
       steps {
         script {
-          //docker.image("${registry}:${env.BUILD_ID}").inside {c ->
-            sh './scripts/test.sh'
+          sh './scripts/test.sh'
         }
+
       }
     }
 
     stage('Docker image build') {
       steps {
         script {
-         // true
-         def customImage = docker.build("${registry}:${env.BUILD_ID}")
+          def customImage = docker.build("${registry}:${env.BUILD_ID}")
         }
 
       }
