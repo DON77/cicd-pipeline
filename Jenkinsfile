@@ -13,7 +13,7 @@ pipeline {
     stage('Build Application') {
       steps {
         script {
-          sh "sudo -S  ./scripts/build.sh"
+          sh "  ./scripts/build.sh"
         }
 
       }
@@ -22,7 +22,7 @@ pipeline {
     stage('test') {
       steps {
         script {
-          sh "sudo -S ./scripts/test.sh"
+          sh " ./scripts/test.sh"
         }
 
       }
