@@ -5,14 +5,14 @@ pipeline {
       steps {
         script {
           checkout scm
-          sh ./build.sh 
+          sh "./build.sh" 
         }
       }
     }
     stage('test') {
       steps {
         script {
-         sh ./test.sh
+         sh "./test.sh"
         }
       }
     }
