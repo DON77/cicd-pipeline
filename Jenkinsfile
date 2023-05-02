@@ -14,8 +14,8 @@ pipeline {
     stage('Build Application') {
       steps {
         script {
-          docker.image("${registry}:${env.BUILD_ID}").inside {c ->
-          sh ''' whoami
+          docker.image("${registry}:${env.BUILD_ID}").withRun('-p 3001:3000') {c ->
+          sh ''' sleep(5) whoami
 PWD
 cd
 cd /opt/src
@@ -30,8 +30,8 @@ chmod +x build.sh
     stage('test') {
       steps {
         script {
-          docker.image('node:12').inside {c ->
-          sh 'cd scripts/ && chmod +x test.sh && ./test.sh'}
+          docker.image('node:12').withRun('-p 3001:3000') {c ->
+          sh 'sleep(4) cd scripts/ && chmod +x test.sh && ./test.sh'}
         }
 
       }
