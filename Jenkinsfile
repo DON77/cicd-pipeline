@@ -10,22 +10,22 @@ pipeline {
 
       }
     }
+
     stage('Build Application') {
       steps {
-       script {
+        script {
           docker.image("${registry}:${env.BUILD_ID}").inside {c ->
-          sh ''' whoami 
-          PWD
-          cd
-          cd /opt/src 
-          ls -lah
-          chmod +x build.sh 
-          ./build.sh'''} 
-        }
+          sh ''' whoami
+PWD
+cd
+cd /opt/src
+ls -lah
+chmod +x build.sh
+./build.sh'''}
         }
 
       }
-    
+    }
 
     stage('test') {
       steps {
