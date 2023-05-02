@@ -5,20 +5,23 @@ pipeline {
       steps {
         script {
           checkout scm
+          def customImage = docker.build("${registry}:${env.BUILD_ID}")
         }
 
       }
     }
-
     stage('Build Application') {
       steps {
-        script {
-          docker.image('node:7.8').inside {c ->
-          sh '''  chmod +x scripts/build.sh
-
-cp package.json opt/
-ls -lah /opt  cd /opt  ./scripts/build.sh
-'''}
+       script {
+          docker.image("${registry}:${env.BUILD_ID}").inside {c ->
+          sh ''' whoami 
+          PWD
+          cd
+          cd /opt/src 
+          ls -lah
+          chmod +x build.sh 
+          ./build.sh'''} 
+        }
         }
 
       }
